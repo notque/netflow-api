@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/gophercloud/gophercloud"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/util"
 )
 
 // Cache type used for the name caches

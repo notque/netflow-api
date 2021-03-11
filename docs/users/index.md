@@ -1,9 +1,9 @@
-# Documentation for Hermes users
+# Documentation for netflow-api users
 
-Hermes is an audit trail service for OpenStack. If auditing is enabled and Hermes is deployed to OpenStack, per tenant 
+netflow-api is an audit trail service for OpenStack. If auditing is enabled and netflow-api is deployed to OpenStack, per tenant 
 audit events are available as an API to users, as well as an optional Dashboard component.
 
-A Hermes event is a JSON record containing the details of a given OpenStack event. The event log contains
+A netflow-api event is a JSON record containing the details of a given OpenStack event. The event log contains
 information about actions taken within your OpenStack tenant or domain, such as who made the request, 
 what the request was, and when the request occurred.
 
@@ -26,10 +26,10 @@ For any given event, the log contains the following details: What, When, Who, Fr
 
 ## Available clients
 
-* Hermes command line client [HermesCtl](https://github.com/sapcc/hermes-ctl)
-* You can send requests to [the HTTP API](./hermes-v1-reference.md) directly, as shown [in this guide](./api-example.md).
-* The OpenStack web dashboard [Elektra](https://github.com/sapcc/elektra) contains an optional *Audit*
-  module that becomes accessible if Hermes is deployed in the target OpenStack cluster.
+* netflow-api command line client [netflow-apiCtl](https://github.com/notque/netflow-api-ctl)
+* You can send requests to [the HTTP API](./netflow-api-v1-reference.md) directly, as shown [in this guide](./api-example.md).
+* The OpenStack web dashboard [Elektra](https://github.com/notque/elektra) contains an optional *Audit*
+  module that becomes accessible if netflow-api is deployed in the target OpenStack cluster.
 
 ## Retention of audit events
 

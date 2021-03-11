@@ -25,8 +25,8 @@ import (
 	"strings"
 
 	"github.com/gorilla/mux"
-	"github.com/sapcc/hermes/pkg/identity"
-	"github.com/sapcc/hermes/pkg/storage"
+	"github.com/notque/netflow-api/pkg/identity"
+	"github.com/notque/netflow-api/pkg/storage"
 )
 
 type v1Provider struct {
@@ -35,7 +35,7 @@ type v1Provider struct {
 	versionData VersionData
 }
 
-//NewV1Handler creates a http.Handler that serves the Hermes v1 API.
+//NewV1Handler creates a http.Handler that serves the netflow-api v1 API.
 //It also returns the VersionData for this API version which is needed for the
 //version advertisement on "GET /".
 func NewV1Handler(keystone identity.Identity, storage storage.Storage) (http.Handler, VersionData) {
@@ -55,7 +55,7 @@ func NewV1Handler(keystone identity.Identity, storage storage.Storage) (http.Han
 			},
 			{
 				Relation: "describedby",
-				URL:      "https://github.com/sapcc/hermes/tree/master/docs",
+				URL:      "https://github.com/notque/netflow-api/tree/master/docs",
 				Type:     "text/html",
 			},
 		},

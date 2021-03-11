@@ -1,16 +1,16 @@
 # Configuration Guide
 
-Hermes is configured using a TOML config file that is by default located in `etc/hermes/hermes.conf`.
+netflow-api is configured using a TOML config file that is by default located in `etc/netflow-api/netflow-api.conf`.
 An example configuration file is located in etc/ which can help you get started.
 
-#### Main Hermes config
+#### Main netflow-api config
 
-\[hermes\]
+\[netflow-api\]
 * PolicyFilePath - Location of [OpenStack policy file](https://docs.OpenStack.org/security-guide/identity/policies.html) - policy.json file for which roles are required to access audit events. 
 Example located in `etc/policy.json`
 
 #### ElasticSearch configuration
-Any data served by Hermes requires an underlying ElasticSearch installation to act as the Datastore.
+Any data served by netflow-api requires an underlying ElasticSearch installation to act as the Datastore.
 
 \[ElasticSearch\]
 * url - Url for ElasticSearch
@@ -22,6 +22,6 @@ Any data served by Hermes requires an underlying ElasticSearch installation to a
 * password 
 * user_domain_name 
 * project_name
-* token_cache_time - In order to improve responsiveness and protect Keystone from too much load, Hermes will
+* token_cache_time - In order to improve responsiveness and protect Keystone from too much load, netflow-api will
 re-check authorizations for users by default every 15 minutes (900 seconds).
 

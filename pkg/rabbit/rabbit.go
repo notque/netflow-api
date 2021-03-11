@@ -23,12 +23,12 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/sapcc/hermes/pkg/cadf"
+	"github.com/notque/netflow-api/pkg/cadf"
 	"github.com/streadway/amqp"
 )
 
 // DeclareQueue is a wrapper around *amqp.Channel.QueueDeclare. It declares a
-// Queue with parameters expected by Hermes' RabbitMQ deployment.
+// Queue with parameters expected by netflow-api' RabbitMQ deployment.
 func DeclareQueue(ch *amqp.Channel, queueName string) (amqp.Queue, error) {
 	return ch.QueueDeclare(
 		queueName, // name of the queue
@@ -41,7 +41,7 @@ func DeclareQueue(ch *amqp.Channel, queueName string) (amqp.Queue, error) {
 }
 
 // PublishEvent is a wrapper around *amqp.Channel.Publish. It publishes a
-// cadf.Event to the specified Queue with parameters expected by Hermes'
+// cadf.Event to the specified Queue with parameters expected by netflow-api'
 // RabbitMQ deployment.
 // A nil pointer for event parameter will result in an error.
 func PublishEvent(ch *amqp.Channel, queueName string, event *cadf.Event) error {

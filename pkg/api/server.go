@@ -5,11 +5,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/notque/netflow-api/pkg/identity"
+	"github.com/notque/netflow-api/pkg/storage"
+	"github.com/notque/netflow-api/pkg/util"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/cors"
-	"github.com/sapcc/hermes/pkg/identity"
-	"github.com/sapcc/hermes/pkg/storage"
-	"github.com/sapcc/hermes/pkg/util"
 	"github.com/spf13/viper"
 )
 

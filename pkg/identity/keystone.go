@@ -28,8 +28,8 @@ import (
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
 	"github.com/gophercloud/gophercloud/openstack/identity/v3/tokens"
+	"github.com/notque/netflow-api/pkg/util"
 	"github.com/pkg/errors"
-	"github.com/sapcc/hermes/pkg/util"
 	"github.com/spf13/viper"
 )
 
@@ -437,7 +437,7 @@ func (d Keystone) RefreshToken() error {
 	return nil
 }
 
-//AuthOptions fills in Keystone options with hermes config values
+//AuthOptions fills in Keystone options with netflow-api config values
 func (d Keystone) AuthOptions() *gophercloud.AuthOptions {
 	return &gophercloud.AuthOptions{
 		IdentityEndpoint: viper.GetString("Keystone.auth_url"),

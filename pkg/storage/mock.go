@@ -3,7 +3,7 @@ package storage
 import (
 	"encoding/json"
 
-	"github.com/sapcc/hermes/pkg/cadf"
+	"github.com/notque/netflow-api/pkg/cadf"
 )
 
 // Mock elasticsearch driver with static data

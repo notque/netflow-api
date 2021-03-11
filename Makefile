@@ -1,4 +1,4 @@
-PKG 	= github.com/sapcc/hermes
+PKG 	= github.com/notque/netflow-api
 PREFIX 	:= /usr
 DATE    ?= $(shell date +%FT%T%z)
 VERSION ?= $(shell git describe --tags --always --dirty --match=v* 2> /dev/null || \
@@ -151,14 +151,14 @@ build/docker.tar: clean test
 	( cd build/install && tar cf - . ) > build/docker.tar
 
 DOCKER       := docker
-DOCKER_IMAGE := sapcc/hermes
+DOCKER_IMAGE := notque/netflow-api
 DOCKER_TAG   := latest
 
 docker: build/docker.tar
 	$(DOCKER) build -t "$(DOCKER_IMAGE):$(DOCKER_TAG)" .
 
 install: all
-	#install -D -m 0755 build/hermes "$(DESTDIR)$(PREFIX)/bin/hermes"
-	install -D -m 0755 $(CURDIR)/build/hermes "$(DESTDIR)$(PREFIX)/bin/hermes"
+	#install -D -m 0755 build/netflow-api "$(DESTDIR)$(PREFIX)/bin/netflow-api"
+	install -D -m 0755 $(CURDIR)/build/netflow-api "$(DESTDIR)$(PREFIX)/bin/netflow-api"
 
 .PHONY: FORCE

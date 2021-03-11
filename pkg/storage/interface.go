@@ -20,7 +20,7 @@
 package storage
 
 import (
-	"github.com/sapcc/hermes/pkg/cadf"
+	"github.com/notque/netflow-api/pkg/cadf"
 )
 
 // Status contains Prometheus status strings
@@ -76,7 +76,7 @@ type FieldOrder struct {
 	Order     string //asc or desc
 }
 
-// EventFilter is similar to hermes.EventFilter, but using IDs instead of names
+// EventFilter is similar to netflow-api.EventFilter, but using IDs instead of names
 type EventFilter struct {
 	ObserverType  string
 	TargetType    string

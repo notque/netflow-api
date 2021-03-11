@@ -30,15 +30,15 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/sapcc/hermes/pkg/hermes"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/netflow-api"
+	"github.com/notque/netflow-api/pkg/util"
 )
 
 // EventList is the model for JSON returned by the ListEvents API call
 type EventList struct {
 	NextURL string              `json:"next,omitempty"`
 	PrevURL string              `json:"previous,omitempty"`
-	Events  []*hermes.ListEvent `json:"events"`
+	Events  []*netflow-api.ListEvent `json:"events"`
 	Total   int                 `json:"total"`
 }
 
@@ -58,7 +58,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 	// Parse the sort query string
 	//slice of a struct, key and direction.
 
-	sortSpec := []hermes.FieldOrder{}
+	sortSpec := []netflow-api.FieldOrder{}
 	validSortTopics := map[string]bool{"time": true, "initiator_id": true, "observer_type": true, "target_type": true,
 		"target_id": true, "action": true, "outcome": true, "initiator_name": true, "initiator_type": true,
 
@@ -89,7 +89,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 				defsortorder = sortDirection
 			}
 
-			s := hermes.FieldOrder{Fieldname: sortfield, Order: defsortorder}
+			s := netflow-api.FieldOrder{Fieldname: sortfield, Order: defsortorder}
 			sortSpec = append(sortSpec, s)
 
 		}
@@ -139,7 +139,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 	}
 
 	util.LogDebug("api.ListEvents: Create filter")
-	filter := hermes.EventFilter{
+	filter := netflow-api.EventFilter{
 		ObserverType:  req.FormValue("observer_type") + req.FormValue("source"),
 		TargetType:    req.FormValue("target_type") + req.FormValue("resource_type"),
 		TargetID:      req.FormValue("target_id"),
@@ -154,12 +154,12 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 		Sort:          sortSpec,
 	}
 
-	util.LogDebug("api.ListEvents: call hermes.GetEvents()")
+	util.LogDebug("api.ListEvents: call netflow-api.GetEvents()")
 	indexID, err := getIndexID(token, req, res)
 	if err != nil {
 		return
 	}
-	events, total, err := hermes.GetEvents(&filter, indexID, p.keystone, p.storage)
+	events, total, err := netflow-api.GetEvents(&filter, indexID, p.keystone, p.storage)
 	if ReturnError(res, err) {
 		util.LogError("api.ListEvents: error %s", err)
 		storageErrorsCounter.Add(1)
@@ -204,7 +204,7 @@ func (p *v1Provider) GetEventDetails(res http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	event, err := hermes.GetEvent(eventID, indexID, p.keystone, p.storage)
+	event, err := netflow-api.GetEvent(eventID, indexID, p.keystone, p.storage)
 
 	if ReturnError(res, err) {
 		util.LogError("error getting events from Storage: %s", err)
@@ -240,7 +240,7 @@ func (p *v1Provider) GetAttributes(res http.ResponseWriter, req *http.Request) {
 	}
 
 	util.LogDebug("api.GetAttributes: Create filter")
-	filter := hermes.AttributeFilter{
+	filter := netflow-api.AttributeFilter{
 		QueryName: queryName,
 		MaxDepth:  uint(maxdepth),
 		Limit:     uint(limit),
@@ -251,7 +251,7 @@ func (p *v1Provider) GetAttributes(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	attribute, err := hermes.GetAttributes(&filter, indexID, p.storage)
+	attribute, err := netflow-api.GetAttributes(&filter, indexID, p.storage)
 
 	if ReturnError(res, err) {
 		util.LogError("could not get attributes from Storage: %s", err)

@@ -9,9 +9,9 @@ RUN curl https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz | ( cd /
 
 #Do once only:
 #
-#$ cd $GOPATH/src/github.com/sapcc/hermes
+#$ cd $GOPATH/src/github.com/notque/netflow-api
 #
-#$ docker build -f Dockerfile.local -t hermes-build.local .
+#$ docker build -f Dockerfile.local -t netflow-api-build.local .
 #
 #Do once only per shell session:
 #
@@ -19,7 +19,7 @@ RUN curl https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz | ( cd /
 #
 #Do once per build attempt:
 #
-#$ docker run --privileged -v $GOPATH/src/github.com/sapcc/hermes:/tmp/build/hermes.git -v /tmp/version:/tmp/build/hermes.version -w="/tmp/build/hermes.git" -e "NO_PROXY=$NO_PROXY" -e "HTTP_PROXY=$HTTP_PROXY" hermes-build.local /bin/bash -c '
+#$ docker run --privileged -v $GOPATH/src/github.com/notque/netflow-api:/tmp/build/netflow-api.git -v /tmp/version:/tmp/build/netflow-api.version -w="/tmp/build/netflow-api.git" -e "NO_PROXY=$NO_PROXY" -e "HTTP_PROXY=$HTTP_PROXY" netflow-api-build.local /bin/bash -c '
 #set -ex
 #export TZ=UTC
 #source /tasks/common.sh

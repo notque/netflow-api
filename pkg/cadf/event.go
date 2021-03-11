@@ -7,13 +7,13 @@ import (
 	"time"
 
 	"github.com/gofrs/uuid"
-	"github.com/sapcc/go-bits/gopherpolicy"
+	"github.com/notque/go-bits/gopherpolicy"
 )
 
 // Event contains the CADF event according to CADF spec, section 6.6.1 Event (data)
 // Extensions: requestPath (OpenStack, IBM), initiator.project_id/domain_id
 // Omissions: everything that we do not use or not expose to API users
-//  The JSON annotations are for parsing the result from ElasticSearch AND for generating the Hermes API response
+//  The JSON annotations are for parsing the result from ElasticSearch AND for generating the netflow-api API response
 type Event struct {
 	// CADF Event Schema
 	TypeURI string `json:"typeURI"`

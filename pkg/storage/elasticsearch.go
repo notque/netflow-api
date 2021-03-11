@@ -7,8 +7,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/sapcc/hermes/pkg/cadf"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/cadf"
+	"github.com/notque/netflow-api/pkg/util"
 	"github.com/spf13/viper"
 	"gopkg.in/olivere/elastic.v5"
 )

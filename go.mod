@@ -1,4 +1,4 @@
-module github.com/sapcc/hermes
+module github.com/notque/netflow-api
 
 require (
 	github.com/databus23/goslo.policy v0.0.0-20170317131957-3ae74dd07ebf
@@ -15,7 +15,7 @@ require (
 	github.com/prometheus/common v0.7.0 // indirect
 	github.com/prometheus/procfs v0.0.5 // indirect
 	github.com/rs/cors v1.7.0
-	github.com/sapcc/go-bits v0.0.0-20190910095551-3863bd6b4943
+	github.com/notque/go-bits v0.0.0-20190910095551-3863bd6b4943
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect

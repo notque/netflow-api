@@ -1,10 +1,10 @@
-package hermes
+package netflow-api
 
 import (
 	"testing"
 
-	"github.com/sapcc/hermes/pkg/identity"
-	"github.com/sapcc/hermes/pkg/storage"
+	"github.com/notque/netflow-api/pkg/identity"
+	"github.com/notque/netflow-api/pkg/storage"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

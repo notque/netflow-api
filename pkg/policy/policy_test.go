@@ -7,7 +7,7 @@ import (
 	"os"
 
 	policy "github.com/databus23/goslo.policy"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/util"
 	"github.com/stretchr/testify/assert"
 )
 

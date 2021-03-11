@@ -28,7 +28,7 @@ import (
 	policy "github.com/databus23/goslo.policy"
 	"github.com/gophercloud/gophercloud"
 	"github.com/gorilla/mux"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/util"
 	"github.com/spf13/viper"
 )
 
@@ -49,7 +49,7 @@ func (p *v1Provider) CheckToken(r *http.Request) *Token {
 		return &Token{err: errors.New("X-Auth-Token header missing")}
 	}
 
-	t := &Token{enforcer: viper.Get("hermes.PolicyEnforcer").(*policy.Enforcer)}
+	t := &Token{enforcer: viper.Get("netflow-api.PolicyEnforcer").(*policy.Enforcer)}
 	t.context, t.err = p.keystone.ValidateToken(str)
 	if t.err != nil {
 		util.LogDebug("Error connection to identity server %s", t.err)

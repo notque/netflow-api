@@ -1,6 +1,6 @@
-# Example for usage of Hermes API
+# Example for usage of netflow-api API
 
-Since there is no commandline client for Hermes yet, this guide shall introduce you to using the Hermes API directly via
+Since there is no commandline client for netflow-api yet, this guide shall introduce you to using the netflow-api API directly via
 `curl`.
 
 ## Getting a token
@@ -15,9 +15,9 @@ export OS_AUTH_TOKEN="$(openstack token issue -f value -c id)"
 
 This command will not print any output if it is successful.
 
-## Finding Hermes
+## Finding netflow-api
 
-Query the service catalog to find the Hermes endpoint. It can be identified by looking for the `resources` service type:
+Query the service catalog to find the netflow-api endpoint. It can be identified by looking for the `resources` service type:
 
 ```bash
 $ openstack catalog list
@@ -33,7 +33,7 @@ $ openstack catalog list
 |               |               |                                                                          |
 | ...           | ...           | ...                                                                      |
 |               |               |                                                                          |
-| hermes        | audit-data    | staging                                                                  |
+| netflow-api        | audit-data    | staging                                                                  |
 |               |               |   public: https://limes.example.com                                      |
 |               |               |                                                                          |
 | ...           | ...           | ...                                                                      |
@@ -41,14 +41,14 @@ $ openstack catalog list
 +---------------+---------------+--------------------------------------------------------------------------+
 ```
 
-### Using Hermes
+### Using netflow-api
 
-In this case, the endpoint URL for Hermes is `https://hermes.example.com`, so you can build a request URL by appending 
+In this case, the endpoint URL for netflow-api is `https://netflow-api.example.com`, so you can build a request URL by appending 
 one of the paths from the [API reference][v1-api]. For example, to show quota and usage data for a project, use the
 following command:
 
 ```bash
-curl -H "X-Auth-Token: $OS_AUTH_TOKEN" https://hermes.example.com/v1/events
+curl -H "X-Auth-Token: $OS_AUTH_TOKEN" https://netflow-api.example.com/v1/events
 ```
 
 `$OS_AUTH_TOKEN` is the token from the first step. `$DOMAIN_ID` and `$PROJECT_ID` need to be set by you to the project
@@ -56,4 +56,4 @@ ID in question and its domain ID. If you only have a project name, you can get t
 show $NAME`.
 
 [os-cli]: https://docs.openstack.org/user-guide/cli.html
-[v1-api]: ./hermes-v1-reference.md
+[v1-api]: ./netflow-api-v1-reference.md

@@ -8,7 +8,7 @@
         "rel": "self"
       },
       {
-        "href": "https://github.com/sapcc/hermes/tree/master/docs",
+        "href": "https://github.com/notque/netflow-api/tree/master/docs",
         "rel": "describedby",
         "type": "text/html"
       }

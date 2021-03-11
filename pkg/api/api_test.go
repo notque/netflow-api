@@ -26,10 +26,10 @@ import (
 	"testing"
 
 	policy "github.com/databus23/goslo.policy"
+	"github.com/notque/netflow-api/pkg/identity"
+	"github.com/notque/netflow-api/pkg/storage"
+	"github.com/notque/netflow-api/pkg/test"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/sapcc/hermes/pkg/identity"
-	"github.com/sapcc/hermes/pkg/storage"
-	"github.com/sapcc/hermes/pkg/test"
 	"github.com/spf13/viper"
 )
 
@@ -50,7 +50,7 @@ func setupTest(t *testing.T) http.Handler {
 	if err != nil {
 		t.Fatal(err)
 	}
-	viper.Set("hermes.PolicyEnforcer", policyEnforcer)
+	viper.Set("netflow-api.PolicyEnforcer", policyEnforcer)
 
 	//create test driver with the domains and projects from start-data.sql
 	keystone := identity.Mock{}

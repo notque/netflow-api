@@ -17,16 +17,16 @@
 *
 *******************************************************************************/
 
-package hermes
+package netflow-api
 
 import (
 	"fmt"
 
 	"github.com/jinzhu/copier"
-	"github.com/sapcc/hermes/pkg/cadf"
-	"github.com/sapcc/hermes/pkg/identity"
-	"github.com/sapcc/hermes/pkg/storage"
-	"github.com/sapcc/hermes/pkg/util"
+	"github.com/notque/netflow-api/pkg/cadf"
+	"github.com/notque/netflow-api/pkg/identity"
+	"github.com/notque/netflow-api/pkg/storage"
+	"github.com/notque/netflow-api/pkg/util"
 )
 
 // ListEvent contains high-level data about an event, intended as a list item
@@ -83,7 +83,7 @@ func GetEvents(filter *EventFilter, tenantID string, keystoneDriver identity.Ide
 	if err != nil {
 		return nil, 0, err
 	}
-	util.LogDebug("hermes.GetEvents: tenant id is %s", tenantID)
+	util.LogDebug("netflow-api.GetEvents: tenant id is %s", tenantID)
 	eventDetails, total, err := eventStore.GetEvents(storageFilter, tenantID)
 	if err != nil {
 		return nil, 0, err

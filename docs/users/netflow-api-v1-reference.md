@@ -1,4 +1,5 @@
-# Hermes v1 API Reference
+
+# netflow-api v1 API Reference
 
 The URLs indicated in the headers of each section are relative to the endpoint URL advertised in the Keystone catalog 
 under the service type resources.
@@ -93,8 +94,8 @@ This example shows the audit events for adding a role to a user.
 
 ```json
 {
-  "next": "http://{hermes_host}:8788/v1/events?limit=2&offset=3",
-  "previous": "http://{hermes_host}:8788/v1/events?limit=2&offset=0",
+  "next": "http://{netflow-api_host}:8788/v1/events?limit=2&offset=3",
+  "previous": "http://{netflow-api_host}:8788/v1/events?limit=2&offset=0",
   "events": [
     {
       "id": "d3f6695e-8a55-5db1-895c-9f7f0910b7a5",
