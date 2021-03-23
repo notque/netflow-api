@@ -29,17 +29,17 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/pkg/errors"
-	"github.com/notque/netflow-api/pkg/netflow-api"
+	"github.com/notque/netflow-api/pkg/netflow"
 	"github.com/notque/netflow-api/pkg/util"
+	"github.com/pkg/errors"
 )
 
 // EventList is the model for JSON returned by the ListEvents API call
 type EventList struct {
-	NextURL string              `json:"next,omitempty"`
-	PrevURL string              `json:"previous,omitempty"`
-	Events  []*netflow-api.ListEvent `json:"events"`
-	Total   int                 `json:"total"`
+	NextURL string               `json:"next,omitempty"`
+	PrevURL string               `json:"previous,omitempty"`
+	Events  []*netflow.ListEvent `json:"events"`
+	Total   int                  `json:"total"`
 }
 
 //ListEvents handles GET /v1/events.
@@ -58,7 +58,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 	// Parse the sort query string
 	//slice of a struct, key and direction.
 
-	sortSpec := []netflow-api.FieldOrder{}
+	sortSpec := []netflow.FieldOrder{}
 	validSortTopics := map[string]bool{"time": true, "initiator_id": true, "observer_type": true, "target_type": true,
 		"target_id": true, "action": true, "outcome": true, "initiator_name": true, "initiator_type": true,
 
@@ -89,7 +89,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 				defsortorder = sortDirection
 			}
 
-			s := netflow-api.FieldOrder{Fieldname: sortfield, Order: defsortorder}
+			s := netflow.FieldOrder{Fieldname: sortfield, Order: defsortorder}
 			sortSpec = append(sortSpec, s)
 
 		}
@@ -139,7 +139,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 	}
 
 	util.LogDebug("api.ListEvents: Create filter")
-	filter := netflow-api.EventFilter{
+	filter := netflow.EventFilter{
 		ObserverType:  req.FormValue("observer_type") + req.FormValue("source"),
 		TargetType:    req.FormValue("target_type") + req.FormValue("resource_type"),
 		TargetID:      req.FormValue("target_id"),
@@ -159,7 +159,7 @@ func (p *v1Provider) ListEvents(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		return
 	}
-	events, total, err := netflow-api.GetEvents(&filter, indexID, p.keystone, p.storage)
+	events, total, err := netflow.GetEvents(&filter, indexID, p.keystone, p.storage)
 	if ReturnError(res, err) {
 		util.LogError("api.ListEvents: error %s", err)
 		storageErrorsCounter.Add(1)
@@ -204,7 +204,7 @@ func (p *v1Provider) GetEventDetails(res http.ResponseWriter, req *http.Request)
 		return
 	}
 
-	event, err := netflow-api.GetEvent(eventID, indexID, p.keystone, p.storage)
+	event, err := netflow.GetEvent(eventID, indexID, p.keystone, p.storage)
 
 	if ReturnError(res, err) {
 		util.LogError("error getting events from Storage: %s", err)
@@ -240,7 +240,7 @@ func (p *v1Provider) GetAttributes(res http.ResponseWriter, req *http.Request) {
 	}
 
 	util.LogDebug("api.GetAttributes: Create filter")
-	filter := netflow-api.AttributeFilter{
+	filter := netflow.AttributeFilter{
 		QueryName: queryName,
 		MaxDepth:  uint(maxdepth),
 		Limit:     uint(limit),
@@ -251,7 +251,7 @@ func (p *v1Provider) GetAttributes(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	attribute, err := netflow-api.GetAttributes(&filter, indexID, p.storage)
+	attribute, err := netflow.GetAttributes(&filter, indexID, p.storage)
 
 	if ReturnError(res, err) {
 		util.LogError("could not get attributes from Storage: %s", err)

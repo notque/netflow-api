@@ -1,4 +1,4 @@
-package netflow-api
+package netflow
 
 import (
 	"testing"

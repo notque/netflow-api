@@ -7,6 +7,7 @@ require (
 	github.com/gofrs/uuid v4.0.0+incompatible
 	github.com/gophercloud/gophercloud v0.16.0
 	github.com/gorilla/mux v1.8.0
+	github.com/jinzhu/copier v0.2.8
 	github.com/notque/go-bits v0.0.0-20180719004422-96ff0a71599b
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.9.0
